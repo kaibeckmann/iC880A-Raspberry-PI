@@ -8588,6 +8588,62 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 </deviceset>
 </devicesets>
 </library>
+<library name="SparkFun-Capacitors">
+<description>&lt;h3&gt;SparkFun Electronics' preferred foot prints&lt;/h3&gt;
+In this library you'll find resistors, capacitors, inductors, test points, jumper pads, etc.&lt;br&gt;&lt;br&gt;
+We've spent an enormous amount of time creating and checking these footprints and parts, but it is the end user's responsibility to ensure correctness and suitablity for a given componet or application. If you enjoy using this library, please buy one of our products at www.sparkfun.com.
+&lt;br&gt;&lt;br&gt;
+&lt;b&gt;Licensing:&lt;/b&gt; Creative Commons ShareAlike 4.0 International - https://creativecommons.org/licenses/by-sa/4.0/ 
+&lt;br&gt;&lt;br&gt;
+You are welcome to use this library for commercial purposes. For attribution, we ask that when you begin to sell your device using our footprint, you email us with a link to the product being sold. We want bragging rights that we helped (in a very small part) to create your 8th world wonder. We would like the opportunity to feature your device on our homepage.</description>
+<packages>
+<package name="0805-CAP">
+<wire x1="-0.3" y1="0.6" x2="0.3" y2="0.6" width="0.1524" layer="21"/>
+<wire x1="-0.3" y1="-0.6" x2="0.3" y2="-0.6" width="0.1524" layer="21"/>
+<smd name="1" x="-0.9" y="0" dx="0.8" dy="1.2" layer="1"/>
+<smd name="2" x="0.9" y="0" dx="0.8" dy="1.2" layer="1"/>
+<text x="-0.762" y="0.8255" size="0.4064" layer="25">&gt;NAME</text>
+<text x="-1.016" y="-1.397" size="0.4064" layer="27">&gt;VALUE</text>
+<wire x1="0" y1="0.0305" x2="0" y2="-0.0305" width="0.5588" layer="21"/>
+<rectangle x1="0.508" y1="-0.635" x2="1.016" y2="0.635" layer="51"/>
+<rectangle x1="-1.016" y1="-0.635" x2="-0.508" y2="0.635" layer="51" rot="R180"/>
+</package>
+</packages>
+<symbols>
+<symbol name="CAP">
+<wire x1="0" y1="2.54" x2="0" y2="2.032" width="0.1524" layer="94"/>
+<wire x1="0" y1="0" x2="0" y2="0.508" width="0.1524" layer="94"/>
+<text x="1.524" y="2.921" size="1.778" layer="95">&gt;NAME</text>
+<text x="1.524" y="-2.159" size="1.778" layer="96">&gt;VALUE</text>
+<rectangle x1="-2.032" y1="0.508" x2="2.032" y2="1.016" layer="94"/>
+<rectangle x1="-2.032" y1="1.524" x2="2.032" y2="2.032" layer="94"/>
+<pin name="1" x="0" y="5.08" visible="off" length="short" direction="pas" swaplevel="1" rot="R270"/>
+<pin name="2" x="0" y="-2.54" visible="off" length="short" direction="pas" swaplevel="1" rot="R90"/>
+</symbol>
+</symbols>
+<devicesets>
+<deviceset name="2.2UF-25V-+80/-20(0805)" prefix="C" uservalue="yes">
+<description>CAP-11624</description>
+<gates>
+<gate name="G$1" symbol="CAP" x="0" y="0"/>
+</gates>
+<devices>
+<device name="" package="0805-CAP">
+<connects>
+<connect gate="G$1" pin="1" pad="1"/>
+<connect gate="G$1" pin="2" pad="2"/>
+</connects>
+<technologies>
+<technology name="">
+<attribute name="PROD_ID" value="CAP-11624" constant="no"/>
+<attribute name="VALUE" value="2.2uF" constant="no"/>
+</technology>
+</technologies>
+</device>
+</devices>
+</deviceset>
+</devicesets>
+</library>
 </libraries>
 <attributes>
 </attributes>
@@ -8667,6 +8723,8 @@ Standard SMD solder jumper. Used to automate production. Two varients : Normally
 <part name="GND5" library="supply1" deviceset="GND" device=""/>
 <part name="GPS_SEL_TX" library="SparkFun-Retired" deviceset="SOLDERJUMPER" device="NO"/>
 <part name="GPS_SEL_RX" library="SparkFun-Retired" deviceset="SOLDERJUMPER" device="NO"/>
+<part name="J12" library="_c2h" deviceset="CON_HEADER_1X04" device="'NO_LOCK'" value="2.54_PWR"/>
+<part name="C1" library="SparkFun-Capacitors" deviceset="2.2UF-25V-+80/-20(0805)" device="" value="0.1uF"/>
 </parts>
 <sheets>
 <sheet>
@@ -8907,6 +8965,13 @@ shutdown GW</text>
 </instance>
 <instance part="GPS_SEL_RX" gate="1" x="132.08" y="-30.48" smashed="yes" rot="R90">
 <attribute name="NAME" x="129.54" y="-33.02" size="1.778" layer="95" rot="R90"/>
+</instance>
+<instance part="J12" gate="G$1" x="148.59" y="-67.31" smashed="yes" rot="MR180">
+<attribute name="VALUE" x="149.86" y="-64.77" size="1.778" layer="96" rot="MR180"/>
+</instance>
+<instance part="C1" gate="G$1" x="73.66" y="-63.5" smashed="yes">
+<attribute name="NAME" x="75.184" y="-60.579" size="1.778" layer="95"/>
+<attribute name="VALUE" x="75.184" y="-65.659" size="1.778" layer="96"/>
 </instance>
 </instances>
 <busses>
@@ -9158,6 +9223,16 @@ shutdown GW</text>
 <pinref part="GND5" gate="1" pin="GND"/>
 <pinref part="R14" gate="G$1" pin="1"/>
 <wire x1="76.2" y1="-93.218" x2="76.2" y2="-91.44" width="0.1524" layer="91"/>
+</segment>
+<segment>
+<pinref part="J12" gate="G$1" pin="1"/>
+<wire x1="158.75" y1="-69.85" x2="162.56" y2="-69.85" width="0.1524" layer="91"/>
+<label x="162.814" y="-69.596" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="C1" gate="G$1" pin="1"/>
+<wire x1="73.66" y1="-58.42" x2="73.66" y2="-55.88" width="0.1524" layer="91"/>
+<label x="73.66" y="-55.88" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="GPIO18" class="0">
@@ -9547,8 +9622,9 @@ shutdown GW</text>
 </segment>
 <segment>
 <pinref part="INA219" gate="G$1" pin="VCC"/>
-<wire x1="91.44" y1="-66.04" x2="86.36" y2="-66.04" width="0.1524" layer="91"/>
 <label x="86.36" y="-66.04" size="1.778" layer="95"/>
+<pinref part="C1" gate="G$1" pin="2"/>
+<wire x1="91.44" y1="-66.04" x2="73.66" y2="-66.04" width="0.1524" layer="91"/>
 </segment>
 <segment>
 <pinref part="R11" gate="G$1" pin="1"/>
@@ -9728,6 +9804,16 @@ shutdown GW</text>
 <wire x1="116.84" y1="-78.74" x2="121.92" y2="-78.74" width="0.1524" layer="91"/>
 <label x="121.92" y="-78.74" size="1.778" layer="95"/>
 </segment>
+<segment>
+<pinref part="J12" gate="G$1" pin="2"/>
+<wire x1="158.75" y1="-72.39" x2="162.56" y2="-72.39" width="0.1524" layer="91"/>
+<label x="163.068" y="-72.39" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J12" gate="G$1" pin="3"/>
+<wire x1="158.75" y1="-74.93" x2="162.56" y2="-74.93" width="0.1524" layer="91"/>
+<label x="162.814" y="-74.676" size="1.778" layer="95"/>
+</segment>
 </net>
 <net name="+5V" class="0">
 <segment>
@@ -9753,6 +9839,11 @@ shutdown GW</text>
 <pinref part="JP1" gate="A" pin="1"/>
 <wire x1="-7.62" y1="55.88" x2="-14.605" y2="55.88" width="0.1524" layer="91"/>
 <label x="-14.605" y="56.515" size="1.778" layer="95"/>
+</segment>
+<segment>
+<pinref part="J12" gate="G$1" pin="4"/>
+<wire x1="158.75" y1="-77.47" x2="162.56" y2="-77.47" width="0.1524" layer="91"/>
+<label x="162.56" y="-77.47" size="1.778" layer="95"/>
 </segment>
 </net>
 <net name="TXO" class="0">
